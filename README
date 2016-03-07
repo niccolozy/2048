@@ -1,1 +1,9 @@
 2048 with QML
+
+07/03/2016
+moving logic updated, now runable in command line with :
+	1 - left
+	2 - up
+	3 - right
+	4 - down
+	0 - exit
