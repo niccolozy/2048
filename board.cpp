@@ -54,10 +54,12 @@ void Board::print_board()
 
 void Board::move(int type)
 {
+    std::vector<int> temps = cells;
+    bool moved = false;
     for(int line=0;line<size;line++)
     {
         std::vector<int> current_line;
-        current_line = create_line(type,line);
+        current_line = create_line(type,line,&moved);
         if(current_line.empty())
             continue;
 
@@ -68,6 +70,7 @@ void Board::move(int type)
             {
                 current_line[i] += current_line[i+1];
                 current_line[i+1] = 0;
+                moved = true;
             }
         }
         current_line.erase(std::remove(current_line.begin(),current_line.end(),0),current_line.end());
@@ -75,10 +78,14 @@ void Board::move(int type)
 
         update_board(type,line,current_line);
     }
-    rand_generation(2);
+    if(moved == true)
+    {
+        rand_generation(2);
+        steps.push_back(temps);
+    }
 }
 
- std::vector<int> Board::create_line(int type,int num)
+ std::vector<int> Board::create_line(int type, int num, bool *moved)
  {
      std::vector<int> current_line;
      switch (type)
@@ -88,6 +95,8 @@ void Board::move(int type)
              {
                  if(cells[num*4+i])
                      current_line.push_back(cells[num*4+i]);
+                 else if(i<size-1 && cells[num*4+i+1])
+                     *moved = true;
              }
              break;
 
@@ -96,6 +105,8 @@ void Board::move(int type)
              {
                  if(cells[num+i*4])
                      current_line.push_back(cells[num+i*4]);
+                 else if(i<size-1 && cells[num+(i+1)*4])
+                     *moved = true;
              }
              break;
 
@@ -104,6 +115,8 @@ void Board::move(int type)
              {
                  if(cells[num*4+size-i-1])
                      current_line.push_back(cells[num*4+size-i-1]);
+                 else if(i<size-1 && cells[num*4+size-(i+1)-1])
+                     *moved = true;
              }
              break;
 
@@ -112,6 +125,8 @@ void Board::move(int type)
              {
                  if(cells[num+(size-i-1)*4])
                      current_line.push_back(cells[num+(size-i-1)*4]);
+                 else if(i<size-1 && cells[num+(size-i+1-1)*4])
+                     *moved = true;
              }
              break;
          default:
@@ -168,4 +183,14 @@ void Board::move(int type)
              break;
      }
 
+ }
+
+
+ void Board::back_up()
+ {
+     if(!steps.empty())
+     {
+         cells = steps.back();
+         steps.pop_back();
+     }
  }
