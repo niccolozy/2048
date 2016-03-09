@@ -4,5 +4,8 @@
         <file>MainForm.ui.qml</file>
         <file>tesselle.qml</file>
         <file>damier.qml</file>
+        <file>scoreBoard.qml</file>
+        <file>bouton.qml</file>
+        <file>gameOver.qml</file>
     </qresource>
 </RCC>

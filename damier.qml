@@ -1,7 +1,19 @@
 import QtQuick 2.0
 
-Rectangle {
-    width: 100
-    height: 62
+Rectangle
+{
+    id: damier
+    width: 372
+    height: 372
+    color: "#bbada0"
+
+    Grid {
+        id: grid1
+        width: 372
+        rows: 4
+        columns: 4
+        anchors.fill: parent
+    }
+
 }
 
