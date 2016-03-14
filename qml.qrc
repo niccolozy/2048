@@ -1,10 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>MainForm.ui.qml</file>
-        <file>tesselle.qml</file>
-        <file>damier.qml</file>
-        <file>scoreBoard.qml</file>
+        <file>Tesselle.qml</file>
+        <file>Damier.qml</file>
+        <file>Scoreboard.qml</file>
         <file>bouton.qml</file>
         <file>gameOver.qml</file>
     </qresource>

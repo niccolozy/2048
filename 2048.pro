@@ -1,7 +1,7 @@
 TEMPLATE = app
 QT += qml quick
 RESOURCES += qml.qrc
-CONFIG += console
+CONFIG += c++11
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
 
@@ -15,3 +15,6 @@ include(deployment.pri)
 
 HEADERS += \
     board.h
+
+RESOURCES += \
+    qml.qrc

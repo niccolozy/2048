@@ -7,11 +7,16 @@
 #define DOWN 4
 
 #include <vector>
+#include <QObject>
 
-
-class Board
+class Board : public QObject
 {
+    Q_OBJECT
     int size;
+    bool end;
+    bool win;
+    int goal;
+    std::vector<int> scores;
     std::vector<int> cells;
     std::vector< std::vector<int> > steps;
 
@@ -19,14 +24,19 @@ class Board
     void update_board(int type,int num,std::vector<int> current_line);
 
 public:
-    Board();
-    Board(int s);
+    explicit Board(QObject *parent= 0);
+    Board(int size);
     ~Board();
 
+    Q_INVOKABLE QString readVec(int id);
+    Q_INVOKABLE QString readScr();
+    void set_goal(int goal);
     void rand_generation(int nb);
     void print_board();
-    void move(int type);
-    void back_up();
+    Q_INVOKABLE void move(int type);
+    Q_INVOKABLE void go_back();
+    bool check_moveble();
+    void check_end();
 };
 
 #endif // BOARD_H
