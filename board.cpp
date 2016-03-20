@@ -8,7 +8,7 @@ Board::Board(QObject *parent) : QObject(parent)
 {
     end = false;
     win = false;
-    goal = 2048;
+    goal = 2048;    //
     size = 4;
     for(int i=0;i<size*size;i++)
         cells.push_back(0);
@@ -48,8 +48,39 @@ void Board::set_goal(int goal)
 
 QString Board::readVec(int id)
 {
-    return QString::number(cells[id]);
+    if(cells[id]==0)
+        return "";
+    else
+        return QString::number(cells[id]);
 }
+
+
+QColor Board::fondColor(int id)  //
+{
+    int number = cells[id];
+    QColor color;
+    switch(number)
+    {
+        case 0: color = "#ccc0b2"; break;
+        case 2: color = "#F4ECE4"; break;
+        case 4: color = "#ece0c8"; break;
+        case 8: color = "#f2b179"; break;
+        case 16: color = "#f59563"; break;
+        case 32: color = "#f57c5f"; break;
+        case 64: color = "#f95c3b"; break;
+        case 128: color = "#edce71"; break;
+        case 256: color = "#eecc61"; break;
+        case 512: color = "#ebc850"; break;
+        case 1024: color = "#edc53f"; break;
+        case 2048: color = "#eec22e"; break;
+        case 4096: color = "#3d3a33"; break;
+        case 8192: color = "#3d3a33"; break;
+        case 16384: color = "#3d3a33"; break;
+        default: color = QColor(0, 0, 0); break;
+    }
+    return color;
+}
+
 
 QString Board::readScr()
 {
@@ -103,7 +134,7 @@ void Board::move(int type)
     }
     if(moved == true)
     {
-        rand_generation(2);
+        rand_generation(1);
         steps.push_back(temps);
         scores.push_back(scores.back()+new_score);
         check_end();
@@ -210,7 +241,7 @@ void Board::update_board(int type,int num,std::vector<int> current_line)
 }
 
 
-void Board::go_back()
+void Board::go_back()   //
 {
     if(!steps.empty())
     {
@@ -223,7 +254,7 @@ void Board::go_back()
 }
 
 
-bool Board::check_moveble()
+bool Board::check_moveble()     //
 {
     bool movable = false;
     for(int type=1; type<5; type++)

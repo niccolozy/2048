@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <QObject>
+#include <QColor>
 
 class Board : public QObject
 {
@@ -29,13 +30,14 @@ public:
     ~Board();
 
     Q_INVOKABLE QString readVec(int id);
+    Q_INVOKABLE QColor fondColor(int id);
     Q_INVOKABLE QString readScr();
     void set_goal(int goal);
     void rand_generation(int nb);
     void print_board();
     Q_INVOKABLE void move(int type);
     Q_INVOKABLE void go_back();
-    bool check_moveble();
+    Q_INVOKABLE bool check_moveble();
     void check_end();
 };
 

@@ -1,6 +1,6 @@
 import QtQuick 2.0
 
-Item {
+Rectangle {
     id: bouton
     width: 110
     height: 29
@@ -12,7 +12,7 @@ Item {
     property string label: "";
 
     Text {
-        id: text1
+        // id: text1
         x: 18
         y: 6
         color: "#fbeee0"
