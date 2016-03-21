@@ -7,9 +7,8 @@ Rectangle {
     color: "#8c7963"
     radius: 3
 
-    signal cliked;  //
-
     property string label: "";
+    property alias mouse : mouseArea1;
 
     Text {
         // id: text1
@@ -27,6 +26,5 @@ Rectangle {
     MouseArea {
         id: mouseArea1
         anchors.fill: parent;
-        onClicked: bouton.clicked();    //
     }
 }

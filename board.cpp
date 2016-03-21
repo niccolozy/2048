@@ -14,6 +14,7 @@ Board::Board(QObject *parent) : QObject(parent)
         cells.push_back(0);
     rand_generation(2);
     scores.push_back(0);
+    best_score = 0;
 }
 
 Board::~Board()
@@ -87,6 +88,11 @@ QString Board::readScr()
     return QString::number(scores.back());
 }
 
+QString Board::readBestScr()
+{
+    return QString::number(best_score);
+}
+
 void Board::print_board()
 {
     for(int i=0;i<size;i++)
@@ -137,6 +143,8 @@ void Board::move(int type)
         rand_generation(1);
         steps.push_back(temps);
         scores.push_back(scores.back()+new_score);
+        if(scores.back() > best_score)
+            best_score = scores.back();
         check_end();
     }
 }

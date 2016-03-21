@@ -81,7 +81,7 @@ Rectangle
             id: textBestScore
             x: 38
             color: "#f2e7d9"
-            text: qsTr("MEILLEUR")
+            text: qsTr("BEST")
             font.bold: true
             anchors.top: parent.top
             anchors.topMargin: 5
@@ -120,15 +120,17 @@ Rectangle
         x: 135
         y: 63
         label: "REVERSE"
-
-        onCliked: scoreBoard.go_back();     //
+        mouse.onClicked:{
+                            board.go_back();
+                            window1.update();
+                        }
     }
 
     Bouton {
         id: taille
         x: 262
         y: 63
-        label: "TAILLE"
+        label: "SIZE"
 
         // onCliked:  ;
     }
@@ -136,6 +138,7 @@ Rectangle
 
     function scoreUpdate(){
         numScore.text = board.readScr();
+        numBestScore.text = board.readBestScr();
     }
 
     Connections {

@@ -17,6 +17,7 @@ class Board : public QObject
     bool end;
     bool win;
     int goal;
+    int best_score;
     std::vector<int> scores;
     std::vector<int> cells;
     std::vector< std::vector<int> > steps;
@@ -32,6 +33,7 @@ public:
     Q_INVOKABLE QString readVec(int id);
     Q_INVOKABLE QColor fondColor(int id);
     Q_INVOKABLE QString readScr();
+    Q_INVOKABLE QString readBestScr();
     void set_goal(int goal);
     void rand_generation(int nb);
     void print_board();
