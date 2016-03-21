@@ -103,7 +103,7 @@ void Board::move(int type)
     }
     if(moved == true)
     {
-        rand_generation(2);
+        rand_generation(1);
         steps.push_back(temps);
         scores.push_back(scores.back()+new_score);
         check_end();
