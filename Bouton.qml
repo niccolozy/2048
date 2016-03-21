@@ -12,7 +12,7 @@ Rectangle {
     property string label: "";
 
     Text {
-        id: text1
+        // id: text1
         x: 18
         y: 6
         color: "#fbeee0"

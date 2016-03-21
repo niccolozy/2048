@@ -1,10 +1,10 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Tesselle.qml</file>
+        <file>Bouton.qml</file>
         <file>Damier.qml</file>
+        <file>GameOver.qml</file>
         <file>Scoreboard.qml</file>
-        <file>bouton.qml</file>
-        <file>gameOver.qml</file>
+        <file>Tesselle.qml</file>
     </qresource>
 </RCC>
