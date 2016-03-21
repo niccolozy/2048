@@ -8,8 +8,6 @@ Rectangle
     height: 100
     color: "#fbfaef"
 
-    signal go_back();  //
-
     property int numScore: 0;
     property int numBestScore: 0;
 
@@ -112,7 +110,11 @@ Rectangle
         anchors.bottomMargin: 8
         label: "RESTART"
 
-        // onCliked: ;
+        mouse.onClicked:
+        {
+            board.restart(4);
+            window1.update();
+        }
     }
 
     Bouton {
@@ -120,10 +122,11 @@ Rectangle
         x: 135
         y: 63
         label: "REVERSE"
-        mouse.onClicked:{
-                            board.go_back();
-                            window1.update();
-                        }
+        mouse.onClicked:
+        {
+            board.go_back();
+            window1.update();
+        }
     }
 
     Bouton {

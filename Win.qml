@@ -1,42 +1,40 @@
 import QtQuick 2.0
 
-Rectangle {
-    id: gameOver
+Rectangle
+{
+    id: win
     width: 380
     height: 380
     color: "#bbada0"
     radius: 3
-    visible: board.check_moveble()
 
     Text {
         id: text1
         x: 0
+        y: 84
         width: 380
-        height: 66
+        height: 60
         color: "#766d65"
-        text: "Game Over!"
-        anchors.top: parent.top
-        anchors.topMargin: 102
+        text: qsTr("YOU WIN!")
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
-        anchors.horizontalCenter: parent.horizontalCenter
         font.family: "Verdana"
-        wrapMode: Text.WordWrap
+        font.bold: true
         font.pixelSize: 49
     }
 
     Bouton {
         id: restart
-        x: 40
-        y: 245
+        x: 53
+        y: 229
         label: "RESTART"
     }
 
     Bouton {
-        id: reverse
-        x: 226
-        y: 245
-        label: "REVERSE"
+        id: continuee
+        x: 221
+        y: 229
+        label: "CONTINUE"
     }
-}
 
+}

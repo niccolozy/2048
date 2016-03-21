@@ -22,6 +22,27 @@ Board::~Board()
 
 }
 
+void Board::restart(int size)
+{
+    end = false;
+    win = false;
+    goal = 2048;
+    this->size = size;
+
+
+    steps.clear();
+
+
+    cells.clear();
+    for(int i=0;i<size*size;i++)
+        cells.push_back(0);
+
+    rand_generation(2);
+
+    scores.clear();
+    scores.push_back(0);
+
+}
 
 void Board::rand_generation(int nb)
 {
@@ -279,7 +300,7 @@ bool Board::check_moveble()     //
             for(int i=0;i<current_line.size()-1;i++)
             {
                 if(current_line[i] == current_line[i+1])
-                return true;
+                    return true;
             }
         }
     }
@@ -289,10 +310,15 @@ bool Board::check_moveble()     //
 
 void Board::check_end()
 {
-    end = !check_moveble();
+
     for(int i=0; i<cells.size(); i++)
     {
         if(cells[i] == goal)
+        {
             win = true;
+            return;
+        }
     }
+
+    end = !check_moveble();
 }

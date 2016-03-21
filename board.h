@@ -30,6 +30,8 @@ public:
     Board(int size);
     ~Board();
 
+    Q_INVOKABLE void restart(int size);
+
     Q_INVOKABLE QString readVec(int id);
     Q_INVOKABLE QColor fondColor(int id);
     Q_INVOKABLE QString readScr();

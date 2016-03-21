@@ -6,5 +6,6 @@
         <file>GameOver.qml</file>
         <file>Scoreboard.qml</file>
         <file>Tesselle.qml</file>
+        <file>Win.qml</file>
     </qresource>
 </RCC>
