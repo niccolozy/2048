@@ -6,7 +6,9 @@ Rectangle {
     height: 380
     color: "#bbada0"
     radius: 3
-    visible: board.check_moveble()
+    opacity: 0.7
+
+    // visible: board.loseQML
 
     Text {
         id: text1
@@ -15,6 +17,7 @@ Rectangle {
         height: 66
         color: "#766d65"
         text: "Game Over!"
+        font.bold: true
         anchors.top: parent.top
         anchors.topMargin: 102
         verticalAlignment: Text.AlignVCenter
@@ -30,6 +33,12 @@ Rectangle {
         x: 40
         y: 245
         label: "RESTART"
+
+        mouse.onClicked:
+        {
+            board.restart(4);
+            window1.update();
+        }
     }
 
     Bouton {
@@ -37,6 +46,12 @@ Rectangle {
         x: 226
         y: 245
         label: "REVERSE"
+
+        mouse.onClicked:
+        {
+            board.go_back();
+            window1.update();
+        }
     }
 }
 

@@ -25,11 +25,15 @@ class Board : public QObject
     std::vector<int> create_line(int type,int num,bool* moved);
     void update_board(int type,int num,std::vector<int> current_line);
 
+    Q_PROPERTY(bool winQML READ readWin NOTIFY winChanged)
+    Q_PROPERTY(bool loseQML READ readLose NOTIFY loseChanged)
+
 public:
-    explicit Board(QObject *parent= 0);
+    Q_INVOKABLE explicit Board(QObject *parent= 0);
     ~Board();
 
     Q_INVOKABLE void restart(int size);
+    Q_INVOKABLE void continuer();
 
     Q_INVOKABLE QString readVec(int id);
     Q_INVOKABLE QColor fondColor(int id);
@@ -40,8 +44,17 @@ public:
     void print_board();
     Q_INVOKABLE void move(int type);
     Q_INVOKABLE void go_back();
+
     Q_INVOKABLE bool check_moveble();
-    void check_end();
+    Q_INVOKABLE void check_end();
+
+    bool readWin();
+    bool readLose();
+
+signals:
+    void winChanged();
+    void loseChanged();
+
 };
 
 #endif // BOARD_H

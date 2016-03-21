@@ -7,6 +7,8 @@ Rectangle
     height: 372
     color: "#bbada0"
 
+    // visible: (!board.winQML && !board.loseQML)
+
     property int size: repeater1.model;
 
     Grid

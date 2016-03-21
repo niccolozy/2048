@@ -13,19 +13,29 @@ Rectangle
 
     signal sizeChange(int i)
 
-    Text {
-        id: slogan
-        color: "#766d65"
-        text: "2048"
 
-        anchors.left: parent.left
-        anchors.leftMargin: 12
-        anchors.top: parent.top
-        anchors.topMargin: 5
+    Rectangle {
+        id: sloganConteunu
+        x: 12
+        y: 8
+        width: 114
+        height: 48
+        color: "#ebd15b"
+        radius: 3
 
-        font.bold: true
-        font.family: "Verdana"
-        font.pixelSize: 40
+        Text {
+            id: slogan
+            color: "#ffffff"
+            text: "2048"
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            anchors.fill: parent
+
+
+            font.bold: true
+            font.family: "Verdana"
+            font.pixelSize: 32
+        }
     }
 
     Rectangle {
@@ -105,25 +115,27 @@ Rectangle
 
     Bouton {
         id: restart
-        y: 74
+        y: 63
+        width: 79
         anchors.left: parent.left
-        anchors.leftMargin: 9
+        anchors.leftMargin: 12
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 8
         label: "RESTART"
 
         mouse.onClicked:
         {
-            board.restart(10);
-            parent.sizeChange(10);
+            board.restart(4);
             window1.update();
         }
     }
 
     Bouton {
         id: reverse
-        x: 135
+        x: 111
         y: 63
+        width: 79
+        height: 29
         label: "REVERSE"
         mouse.onClicked:
         {
@@ -134,12 +146,36 @@ Rectangle
 
     Bouton {
         id: taille
-        x: 262
+        x: 238
         y: 63
+        width: 99
+        height: 29
         label: "SIZE"
 
-        // onCliked:  ;
+        mouse.onClicked:
+        {
+            board.restart(6);
+            parent.sizeChange(6);
+            window1.update();
+        }
     }
+
+    ChangeSize {
+        id: changeSize1
+        x: 203
+        y: 63
+        signe: '-'
+
+
+    }
+
+    ChangeSize {
+        id: changeSize2
+        x: 343
+        y: 63
+        signe: '+'
+    }
+
 
 
     function scoreUpdate(){

@@ -1,10 +1,11 @@
 import QtQuick 2.3
 import QtQuick.Window 2.2
 
+
 Window {
     id: window1
     width: 380
-    height: 480
+    height: 523
     color: "#fbf8ef"
     title: "2048"
     visible: true
@@ -25,12 +26,13 @@ Window {
 
     Damier {
         id: damier1
-        y: 108
+        x: 4
+        y: 104
+        width: 372
+        height: 372
+
+
         visible: true
-        anchors.left: parent.left
-        anchors.leftMargin: 4
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 4
 
         focus:true
 
@@ -65,7 +67,9 @@ Window {
         id: gameOver1
         x: 0
         y: 100
-        visible: false
+
+        // visible:false
+        visible: board.loseQML
     }
 
     Win {
@@ -74,7 +78,19 @@ Window {
         y: 100
         width: 380
         height: 380
-        visible: false
+        visible: board.winQML
+    }
+
+    Text {
+        id: text1
+        x: 15
+        y: 495
+        width: 303
+        height: 33
+        text: qsTr("DU Xudong et ZHANG Yang   ECLyon-S8 PIG")
+        font.bold: true
+        font.family: "Verdana"
+        font.pixelSize: 14
     }
 
 }

@@ -8,6 +8,10 @@ Board::Board(QObject *parent) : QObject(parent)
 {
     end = false;
     win = false;
+
+    emit loseChanged();
+    emit winChanged();
+
     goal = 2048;    //
     size = 4;
     for(int i=0;i<size*size;i++)
@@ -26,6 +30,10 @@ void Board::restart(int size)
 {
     end = false;
     win = false;
+
+    emit loseChanged();
+    emit winChanged();
+
     goal = 2048;
     this->size = size;
 
@@ -42,6 +50,15 @@ void Board::restart(int size)
     scores.clear();
     scores.push_back(0);
 
+}
+
+void Board::continuer()
+{
+    end = !check_moveble();
+    emit loseChanged();
+
+    win = false;
+    emit winChanged();
 }
 
 void Board::rand_generation(int nb)
@@ -277,8 +294,9 @@ void Board::go_back()   //
         cells = steps.back();
         steps.pop_back();
         scores.pop_back();
-        if(end)
-            end = false;
+
+        check_end();
+
     }
 }
 
@@ -316,9 +334,21 @@ void Board::check_end()
         if(cells[i] == goal)
         {
             win = true;
+            emit winChanged();
             return;
         }
     }
 
     end = !check_moveble();
+    emit loseChanged();
+}
+
+bool Board::readWin()
+{
+    return win;
+}
+
+bool Board::readLose()
+{
+    return end;
 }

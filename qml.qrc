@@ -7,5 +7,6 @@
         <file>Scoreboard.qml</file>
         <file>Tesselle.qml</file>
         <file>Win.qml</file>
+        <file>ChangeSize.qml</file>
     </qresource>
 </RCC>

@@ -7,6 +7,7 @@ Rectangle
     height: 380
     color: "#bbada0"
     radius: 3
+    opacity: 0.7
 
     Text {
         id: text1
@@ -28,13 +29,26 @@ Rectangle
         x: 53
         y: 229
         label: "RESTART"
+
+        mouse.onClicked:
+        {
+            board.restart(4);
+            window1.update();
+        }
     }
 
     Bouton {
         id: continuee
         x: 221
         y: 229
+        opacity: 1
         label: "CONTINUE"
+
+        mouse.onClicked:
+        {
+            board.continuer;
+            window1.update();
+        }
     }
 
 }
