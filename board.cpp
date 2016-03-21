@@ -178,9 +178,9 @@ std::vector<int> Board::create_line(int type, int num, bool *moved)
         case LEFT:
             for(int i=0;i<size;i++)
             {
-                if(cells[num*4+i])
-                    current_line.push_back(cells[num*4+i]);
-                else if(i<size-1 && cells[num*4+i+1])
+                if(cells[num*size+i])
+                    current_line.push_back(cells[num*size+i]);
+                else if(i<size-1 && cells[num*size+i+1])
                     *moved = true;
             }
             break;
@@ -188,9 +188,9 @@ std::vector<int> Board::create_line(int type, int num, bool *moved)
         case UP:
             for(int i=0;i<size;i++)
             {
-                if(cells[num+i*4])
-                    current_line.push_back(cells[num+i*4]);
-                else if(i<size-1 && cells[num+(i+1)*4])
+                if(cells[num+i*size])
+                    current_line.push_back(cells[num+i*size]);
+                else if(i<size-1 && cells[num+(i+1)*size])
                     *moved = true;
             }
             break;
@@ -198,9 +198,9 @@ std::vector<int> Board::create_line(int type, int num, bool *moved)
         case RIGHT:
             for(int i=0;i<size;i++)
             {
-                if(cells[num*4+size-i-1])
-                    current_line.push_back(cells[num*4+size-i-1]);
-                else if(i<size-1 && cells[num*4+size-(i+1)-1])
+                if(cells[num*size+size-i-1])
+                    current_line.push_back(cells[num*size+size-i-1]);
+                else if(i<size-1 && cells[num*size+size-(i+1)-1])
                     *moved = true;
             }
             break;
@@ -208,9 +208,9 @@ std::vector<int> Board::create_line(int type, int num, bool *moved)
         case DOWN:
             for(int i=0;i<size;i++)
             {
-                if(cells[num+(size-i-1)*4])
-                    current_line.push_back(cells[num+(size-i-1)*4]);
-                else if(i<size-1 && cells[num+(size-i+1-1)*4])
+                if(cells[num+(size-i-1)*size])
+                    current_line.push_back(cells[num+(size-i-1)*size]);
+                else if(i<size-1 && cells[num+(size-i+1-1)*size])
                     *moved = true;
             }
             break;
@@ -229,9 +229,9 @@ void Board::update_board(int type,int num,std::vector<int> current_line)
             for(int i=0;i<size;i++)
             {
                 if(i < current_line.size())
-                    cells[num*4+i] = current_line[i];
+                    cells[num*size+i] = current_line[i];
                 else
-                    cells[num*4+i] = 0;
+                    cells[num*size+i] = 0;
             }
             break;
 
@@ -239,9 +239,9 @@ void Board::update_board(int type,int num,std::vector<int> current_line)
             for(int i=0;i<size;i++)
             {
                 if(i < current_line.size())
-                    cells[num+i*4] = current_line[i];
+                    cells[num+i*size] = current_line[i];
                 else
-                    cells[num+i*4] = 0;
+                    cells[num+i*size] = 0;
             }
             break;
 
@@ -249,9 +249,9 @@ void Board::update_board(int type,int num,std::vector<int> current_line)
             for(int i=0;i<size;i++)
             {
                 if(i < current_line.size())
-                    cells[num*4+size-i-1] = current_line[i];
+                    cells[num*size+size-i-1] = current_line[i];
                 else
-                    cells[num*4+size-i-1] = 0;
+                    cells[num*size+size-i-1] = 0;
             }
             break;
 
@@ -259,9 +259,9 @@ void Board::update_board(int type,int num,std::vector<int> current_line)
             for(int i=0;i<size;i++)
             {
                 if(i < current_line.size())
-                    cells[num+(size-i-1)*4] = current_line[i];
+                    cells[num+(size-i-1)*size] = current_line[i];
                 else
-                    cells[num+(size-i-1)*4] = 0;
+                    cells[num+(size-i-1)*size] = 0;
             }
             break;
     default:

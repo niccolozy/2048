@@ -11,6 +11,8 @@ Rectangle
     property int numScore: 0;
     property int numBestScore: 0;
 
+    signal sizeChange(int i)
+
     Text {
         id: slogan
         color: "#766d65"
@@ -112,7 +114,8 @@ Rectangle
 
         mouse.onClicked:
         {
-            board.restart(4);
+            board.restart(10);
+            parent.sizeChange(10);
             window1.update();
         }
     }

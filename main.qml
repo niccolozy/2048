@@ -10,7 +10,7 @@ Window {
     visible: true
 
     signal update()
-    Component.onCompleted: window1.update();
+    //Component.onCompleted: window1.update();
 
 
     Scoreboard {

@@ -7,6 +7,8 @@ Rectangle
     height: 372
     color: "#bbada0"
 
+    property int size: repeater1.model;
+
     Grid
     {
         id: grid1
@@ -17,11 +19,31 @@ Rectangle
 
         Repeater
         {
+            id:repeater1
             model: 16
             Tesselle
             {
                 num:index
+                height: 372/grid1.columns
+                width: 372/grid1.rows
             }
         }
     }
+
+    function sizeUpdate(i)
+    {
+        grid1.rows = i;
+        grid1.columns = i;
+        repeater1.model= i*i;
+    }
+
+
+    Connections {
+        target: scoreboard1
+
+        onSizeChange:
+        {
+            sizeUpdate(i);
+        }
+      }
 }

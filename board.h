@@ -27,7 +27,6 @@ class Board : public QObject
 
 public:
     explicit Board(QObject *parent= 0);
-    Board(int size);
     ~Board();
 
     Q_INVOKABLE void restart(int size);
