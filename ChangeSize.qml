@@ -8,6 +8,7 @@ Rectangle
     radius: 10
 
     property string signe: "";
+    property alias mouse : mouseArea1;
 
     Text {
         id: text1

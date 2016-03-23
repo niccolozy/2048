@@ -123,11 +123,32 @@ Rectangle
         anchors.bottomMargin: 8
         label: "RESTART"
 
+        NumberAnimation {
+            id: hide
+            target: damier1
+            easing.type: Easing.InOutCubic
+            properties: "opacity"
+            from: 1.0
+            to: 0.0
+            duration: 500
+           }
+        NumberAnimation {
+            id: show
+            target: damier1
+            easing.type: Easing.InOutCubic
+            properties: "opacity"
+            from: 0.0
+            to: 1.0
+            duration: 700
+           }
+
         mouse.onClicked:
         {
+            hide.start();
             board.restart(4);
             window1.update();
-        }
+            show.start();
+        }  
     }
 
     Bouton {
@@ -150,13 +171,16 @@ Rectangle
         y: 63
         width: 99
         height: 29
-        label: "SIZE"
+        label: qsTr(size+"x"+size)
+        property int size: 4;
 
         mouse.onClicked:
         {
-            board.restart(6);
-            parent.sizeChange(6);
+            hide.start();
+            board.restart(size);
+            parent.sizeChange(size);
             window1.update();
+            show.start();
         }
     }
 
@@ -165,7 +189,11 @@ Rectangle
         x: 203
         y: 63
         signe: '-'
-
+        mouse.onClicked:
+        {
+            if(taille.size > 2)
+                taille.size--;
+        }
 
     }
 
@@ -174,6 +202,10 @@ Rectangle
         x: 343
         y: 63
         signe: '+'
+        mouse.onClicked:
+        {
+            taille.size++;
+        }
     }
 
 

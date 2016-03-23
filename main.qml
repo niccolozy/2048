@@ -69,7 +69,19 @@ Window {
         y: 100
 
         // visible:false
-        visible: board.loseQML
+        opacity: 0.0
+
+        states: [
+                State { when: board.loseQML;
+                    PropertyChanges {   target: gameOver1; opacity: 0.8    }
+                },
+                State { when: !board.loseQML;
+                    PropertyChanges {   target: gameOver1; opacity: 0.0    }
+                }
+            ]
+            transitions: Transition {
+                NumberAnimation { property: "opacity"; duration: 400}
+            }
     }
 
     Win {
@@ -78,7 +90,18 @@ Window {
         y: 100
         width: 380
         height: 380
-        visible: board.winQML
+        opacity: 0.0
+        states: [
+                State { when: board.winQML;
+                    PropertyChanges {   target: win1; opacity: 0.8    }
+                },
+                State { when: !board.winQML;
+                    PropertyChanges {   target: win1; opacity: 0.0    }
+                }
+            ]
+            transitions: Transition {
+                NumberAnimation { property: "opacity"; duration: 500}
+            }
     }
 
     Text {
