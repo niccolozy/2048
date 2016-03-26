@@ -8,8 +8,8 @@ Rectangle
     height: 100
     color: "#fbfaef"
 
-    property int numScore: 0;
-    property int numBestScore: 0;
+    property int score:0 ;
+    property int bestScore:0;
 
     signal sizeChange(int i)
 
@@ -65,7 +65,7 @@ Rectangle
             id: numScore
             x: 38
             color: "#ffffff"
-            text: board.readScr()   //
+            text: score   //
             font.family: "Verdana"
             font.bold: true
             anchors.top: parent.top
@@ -103,7 +103,7 @@ Rectangle
             id: numBestScore
             x: 38
             color: "#ffffff"
-            text: board.readScr()   //
+            text: bestScore   //
             font.family: "Verdana"
             font.bold: true
             anchors.top: parent.top
@@ -211,8 +211,9 @@ Rectangle
 
 
     function scoreUpdate(){
-        numScore.text = board.readScr();
-        numBestScore.text = board.readBestScr();
+        score = board.readScr();
+        if (score>bestScore)
+            bestScore = score;
     }
 
     Connections {

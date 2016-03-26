@@ -1,6 +1,6 @@
 import QtQuick 2.3
 import QtQuick.Window 2.2
-
+import Qt.labs.settings 1.0
 
 Window {
     id: window1
@@ -13,7 +13,6 @@ Window {
     signal update()
     //Component.onCompleted: window1.update();
 
-
     Scoreboard {
         id: scoreboard1
         anchors.left: parent.left
@@ -21,6 +20,10 @@ Window {
         anchors.top: parent.top
         anchors.topMargin: 0
 
+        Settings {
+            // id: settigns;
+            property int bestScore: scoreboard1.bestScore;
+        }
     }
 
 
