@@ -7,7 +7,9 @@
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-
+    app.setApplicationName("2048");
+    app.setOrganizationName("ZHANG_DU");
+    app.setOrganizationDomain("2048.pig");
     QQmlApplicationEngine engine;
     Board b;
     engine.rootContext()->setContextProperty("board", &b);

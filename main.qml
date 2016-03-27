@@ -12,6 +12,10 @@ Window {
 
     signal update()
     //Component.onCompleted: window1.update();
+    Settings {
+        id: settings;
+        property int bestScore: 0;
+    }
 
     Scoreboard {
         id: scoreboard1
@@ -19,11 +23,6 @@ Window {
         anchors.leftMargin: 0
         anchors.top: parent.top
         anchors.topMargin: 0
-
-        Settings {
-            // id: settigns;
-            property int bestScore: scoreboard1.bestScore;
-        }
     }
 
 
@@ -118,5 +117,13 @@ Window {
         font.family: "Verdana"
         font.pixelSize: 14
     }
+
+    Component.onCompleted: {
+            scoreboard1.bestScore = settings.bestScore;
+        }
+
+    Component.onDestruction: {
+             settings.bestScore = scoreboard1.bestScore;
+        }
 
 }
