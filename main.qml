@@ -108,14 +108,30 @@ Window {
 
     Text {
         id: text1
-        x: 15
-        y: 495
+        y: 482
         width: 303
         height: 33
-        text: qsTr("DU Xudong et ZHANG Yang   ECLyon-S8 PIG")
+        text: qsTr("DU Xudong et ZHANG Yang   Mars, 2016  ECLyon S8")
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 5
+        anchors.left: parent.left
+        anchors.leftMargin: 15
+        anchors.horizontalCenter: parent.horizontalCenter
         font.bold: true
         font.family: "Verdana"
-        font.pixelSize: 14
+        font.pixelSize: 12
+    }
+
+    Text {
+        id: text2
+        x: 23
+        y: 507
+        text: qsTr("Programmation des Interfaces Grahiques en C++")
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 3
+        anchors.horizontalCenter: parent.horizontalCenter
+        font.bold: true
+        font.pixelSize: 13
     }
 
     Component.onCompleted: {
