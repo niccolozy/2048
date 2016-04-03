@@ -111,9 +111,9 @@ Window {
         y: 482
         width: 303
         height: 33
-        text: qsTr("DU Xudong et ZHANG Yang   Mars, 2016  ECLyon S8")
+        text: qsTr("ZHANG Yang et DU Xudong   Mars, 2016  ECLyon S8")
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 5
+        anchors.bottomMargin: 7
         anchors.left: parent.left
         anchors.leftMargin: 15
         anchors.horizontalCenter: parent.horizontalCenter
@@ -128,7 +128,7 @@ Window {
         y: 507
         text: qsTr("Programmation des Interfaces Grahiques en C++")
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 3
+        anchors.bottomMargin: 5
         anchors.horizontalCenter: parent.horizontalCenter
         font.bold: true
         font.pixelSize: 13
