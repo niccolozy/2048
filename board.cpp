@@ -6,8 +6,8 @@
 
 Board::Board(QObject *parent) : QObject(parent)
 {
-    end = false;
-    win = false;
+    this->loseQML = false;
+    winQML = false;
 
     emit loseChanged();
     emit winChanged();
@@ -28,8 +28,8 @@ Board::~Board()
 
 void Board::restart(int size)
 {
-    end = false;
-    win = false;
+    loseQML = false;
+    winQML = false;
 
     emit loseChanged();
     emit winChanged();
@@ -54,10 +54,10 @@ void Board::restart(int size)
 
 void Board::continuer()
 {
-    end = !check_moveble();
+    loseQML = !check_moveble();
     emit loseChanged();
 
-    win = false;
+    winQML = false;
     emit winChanged();
 }
 
@@ -133,24 +133,9 @@ QString Board::readBestScr()
 }
 */
 
-void Board::print_board()
-{
-    for(int i=0;i<size;i++)
-    {
-        for(int j=0;j<size;j++)
-            std::cout<<cells[i*4+j]<<" ";
-        std::cout<<std::endl;
-    }
-    std::cout<<"Score : "<<this->scores.back()<<"\n";
-    if(win)
-        std::cout<<"You win!\n";
-    else if(end)
-        std::cout<<"You lose!\n";
-}
-
 void Board::move(int type)
 {
-    if(end)
+    if(loseQML)
         return;
     std::vector<int> temps = cells;
     bool moved = false;
@@ -335,23 +320,23 @@ void Board::check_end()
     {
         if(cells[i] == goal)
         {
-            win = true;
+            winQML = true;
             goal=16384;
             emit winChanged();
             return;
         }
     }
 
-    end = !check_moveble();
+    loseQML = !check_moveble();
     emit loseChanged();
 }
 
 bool Board::readWin()
 {
-    return win;
+    return winQML;
 }
 
 bool Board::readLose()
 {
-    return end;
+    return loseQML;
 }

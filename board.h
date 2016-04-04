@@ -14,10 +14,8 @@ class Board : public QObject
 {
     Q_OBJECT
     int size;
-    bool end;
-    bool win;
     int goal;
-//    int best_score;
+
     std::vector<int> scores;
     std::vector<int> cells;
     std::vector< std::vector<int> > steps;
@@ -26,6 +24,8 @@ class Board : public QObject
     void update_board(int type,int num,std::vector<int> current_line);
 
     // used in "main.qml" in order to show interface win and lose
+    bool winQML;
+    bool loseQML;
     Q_PROPERTY(bool winQML READ readWin NOTIFY winChanged)
     Q_PROPERTY(bool loseQML READ readLose NOTIFY loseChanged)
 
@@ -39,7 +39,6 @@ public:
 
     // used in "Scoreboard.qml" to read our scores
     Q_INVOKABLE QString readScr();
-//    Q_INVOKABLE QString readBestScr();
 
     // used in "Tesselle.qml" to read the numbers and colors in the board
     Q_INVOKABLE QString readVec(int id);
@@ -53,7 +52,6 @@ public:
 
     void set_goal(int goal);
     void rand_generation(int nb);
-    void print_board();
 
     bool check_moveble();
     void check_end();

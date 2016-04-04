@@ -70,15 +70,15 @@ Window {
         x: 0
         y: 100
 
-        // visible:false
+
         opacity: 0.0
 
         states: [
                 State { when: board.loseQML;
-                    PropertyChanges {   target: gameOver1; opacity: 0.8    }
+                    PropertyChanges {   target: gameOver1; visible:true; opacity: 0.8    }
                 },
                 State { when: !board.loseQML;
-                    PropertyChanges {   target: gameOver1; opacity: 0.0    }
+                    PropertyChanges {   target: gameOver1; visible:false; opacity: 0.0    }
                 }
             ]
             transitions: Transition {
@@ -92,6 +92,7 @@ Window {
         y: 100
         width: 380
         height: 380
+
         opacity: 0.0
         states: [
                 State { when: board.winQML;
@@ -131,6 +132,7 @@ Window {
         anchors.bottomMargin: 5
         anchors.horizontalCenter: parent.horizontalCenter
         font.bold: true
+        font.family: "Verdana"
         font.pixelSize: 13
     }
 

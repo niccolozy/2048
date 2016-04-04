@@ -8,8 +8,6 @@ Rectangle {
     radius: 3
     opacity: 0.7
 
-    // visible: board.loseQML
-
     Text {
         id: text1
         x: 0
@@ -36,7 +34,7 @@ Rectangle {
 
         mouse.onClicked:
         {
-            board.restart(4);
+            board.restart(scoreboard1.size);
             window1.update();
         }
     }
@@ -45,7 +43,7 @@ Rectangle {
         id: reverse
         x: 226
         y: 245
-        label: "REVERSE"
+        label: "UNDO"
 
         mouse.onClicked:
         {

@@ -10,6 +10,7 @@ Rectangle
 
     property int score:0 ;
     property int bestScore:0;
+    property alias size:taille.size;
 
     signal sizeChange(int i)
 
@@ -157,7 +158,7 @@ Rectangle
         y: 63
         width: 79
         height: 29
-        label: "REVERSE"
+        label: "UNDO"
         mouse.onClicked:
         {
             board.go_back();
@@ -173,15 +174,6 @@ Rectangle
         height: 29
         label: qsTr(size+"x"+size)
         property int size: 4;
-
-        mouse.onClicked:
-        {
-            hide.start();
-            board.restart(size);
-            parent.sizeChange(size);
-            window1.update();
-            show.start();
-        }
     }
 
     ChangeSize {
@@ -192,7 +184,14 @@ Rectangle
         mouse.onClicked:
         {
             if(taille.size > 2)
+            {
                 taille.size--;
+                hide.start();
+                board.restart(taille.size);
+                parent.sizeChange(taille.size);
+                window1.update();
+                show.start();
+            }
         }
 
     }
@@ -205,6 +204,11 @@ Rectangle
         mouse.onClicked:
         {
             taille.size++;
+            hide.start();
+            board.restart(taille.size);
+            parent.sizeChange(taille.size);
+            window1.update();
+            show.start();
         }
     }
 
