@@ -4,26 +4,45 @@
 #include <iostream>
 #include <algorithm>
 
+//constructo of Board class
 Board::Board(QObject *parent) : QObject(parent)
 {
     this->loseQML = false;
     winQML = false;
 
-    emit loseChanged();
+    emit loseChanged();             //refresh visibility of Win and GameOver in qml
     emit winChanged();
 
-    goal = 2048;    //
-    size = 4;
+    goal = 8;
+    size = 4;                       //initially a 4x4 board
     for(int i=0;i<size*size;i++)
         cells.push_back(0);
-    rand_generation(2);
+    rand_generation(2);             //put 2 random cells on the board
     scores.push_back(0);
-    // best_score = 0;
 }
 
 Board::~Board()
 {
 
+}
+
+void Board::rand_generation(int nb)
+{
+    srand (time(NULL));
+    int empty_cells = std::count(cells.begin(),cells.end(),0);
+    if(nb > empty_cells)
+        nb = empty_cells;
+    int nb_cell_added = 0;
+    while(nb_cell_added < nb)
+    {
+        int index = rand()%(size*size);
+        int value = (rand()%2+1)*2;
+        if (!cells[index])
+        {
+            cells[index] = value;
+            nb_cell_added++;
+        }
+    }
 }
 
 void Board::restart(int size)
@@ -54,6 +73,7 @@ void Board::restart(int size)
 
 void Board::continuer()
 {
+    goal *= 8;
     loseQML = !check_moveble();
     emit loseChanged();
 
@@ -61,29 +81,7 @@ void Board::continuer()
     emit winChanged();
 }
 
-void Board::rand_generation(int nb)
-{
-    srand (time(NULL));
-    int empty_cells = std::count(cells.begin(),cells.end(),0);
-    if(nb > empty_cells)
-        nb = empty_cells;
-    int nb_cell_added = 0;
-    while(nb_cell_added < nb)
-    {
-        int index = rand()%(size*size);
-        int value = (rand()%2+1)*2;
-        if (!cells[index])
-        {
-            cells[index] = value;
-            nb_cell_added++;
-        }
-    }
-}
 
-void Board::set_goal(int goal)
-{
-    this->goal = goal;
-}
 
 QString Board::readVec(int id)
 {
@@ -321,7 +319,6 @@ void Board::check_end()
         if(cells[i] == goal)
         {
             winQML = true;
-            goal=16384;
             emit winChanged();
             return;
         }

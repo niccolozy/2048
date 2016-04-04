@@ -32,7 +32,7 @@ Rectangle
 
         mouse.onClicked:
         {
-            board.restart(4);
+            board.restart(scoreboard1.size);
             window1.update();
         }
     }
@@ -46,7 +46,7 @@ Rectangle
 
         mouse.onClicked:
         {
-            board.continuer;
+            board.continuer();
             window1.update();
         }
     }

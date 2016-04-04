@@ -146,7 +146,7 @@ Rectangle
         mouse.onClicked:
         {
             hide.start();
-            board.restart(4);
+            board.restart(taille.size);
             window1.update();
             show.start();
         }  

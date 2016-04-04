@@ -96,10 +96,10 @@ Window {
         opacity: 0.0
         states: [
                 State { when: board.winQML;
-                    PropertyChanges {   target: win1; opacity: 0.8    }
+                    PropertyChanges {   target: win1; visible:true; opacity: 0.8    }
                 },
                 State { when: !board.winQML;
-                    PropertyChanges {   target: win1; opacity: 0.0    }
+                    PropertyChanges {   target: win1; visible:false; opacity: 0.0    }
                 }
             ]
             transitions: Transition {
